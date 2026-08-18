@@ -347,7 +347,7 @@
   .contributed .block-time { color: #0F6E56; }
   .break .block-time { color: var(--color-text-tertiary); }
   .talk-item { margin-top: 8px; padding-top: 8px; border-top: 0.5px solid; }
-  .invited .talk-item { border-color: #CEC BF6; }
+  .invited .talk-item { border-color: #CECBF6; }
   .contributed .talk-item { border-color: #9FE1CB; }
   .talk-slot { font-size: 0.8rem; font-weight: 500; margin-bottom: 2px; }
   .invited .talk-slot { color: #534AB7; }
@@ -360,6 +360,40 @@
   .contributed .talk-authors { color: #0F6E56; }
   .affil { font-style: italic; opacity: 0.8; }
   .break-inner { display: flex; align-items: center; gap: 7px; }
+
+  /* Abstract spoilers and paper downloads */
+  .talk-extras { display: flex; align-items: flex-start; gap: 1rem; margin-top: 8px; flex-wrap: wrap; }
+  .talk-abstract { flex: 1 1 12rem; }
+  .talk-abstract > summary {
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: #0F6E56;
+    cursor: pointer;
+    list-style: none;
+    display: inline-block;
+  }
+  .talk-abstract > summary::-webkit-details-marker { display: none; }
+  .talk-abstract > summary::before {
+    content: '\25B8';
+    display: inline-block;
+    margin-right: 5px;
+    transition: transform 0.15s ease;
+  }
+  .talk-abstract[open] > summary::before { transform: rotate(90deg); }
+  .talk-abstract > summary:hover { text-decoration: underline; }
+  .abstract-body {
+    font-size: 0.9rem;
+    color: #333;
+    margin-top: 6px;
+    padding-left: 14px;
+    border-left: 2px solid #9FE1CB;
+    text-align: justify;
+  }
+  .abstract-body p { margin-bottom: 0.6rem; }
+  .abstract-body p:last-child, .abstract-body ul:last-child { margin-bottom: 0; }
+  .abstract-body ul { margin-bottom: 0.6rem; padding-left: 1.2rem; }
+  .abstract-note { font-style: italic; opacity: 0.8; }
+  .paper-link { font-size: 0.8rem; color: #0F6E56; white-space: nowrap; }
 </style>
 </head>
 
@@ -572,6 +606,17 @@
       <div class="talk-slot">10:00 – 10:30</div>
       <div class="talk-title">Monoidal substitution diagrams</div>
       <div class="talk-authors">Samuel Steakley <span class="affil">(Tallinn University of Technology)</span>, Florian Schwarz <span class="affil">(University of Calgary)</span></div>
+      <div class="talk-extras">
+        <details class="talk-abstract">
+          <summary>Abstract</summary>
+          <div class="abstract-body">
+            <p>The objective of this work-in-progress is to give a construction of free symmetric monoidal closed (SMClosed) categories in the form of a graphical calculus based on <em>monoidal substitution diagrams</em>. Our work differs from previous constructions in a certain technical sense (strictness), but it is also quite different in look and feel. As we will show, there is a certain way to read monoidal substitution diagrams that lends a unique visual intuition to an otherwise thorny structure.</p>
+            <p>Instead of the traditional mathematical formulae for objects of an SMClosed category (e.g. A ⊗ B, C ⊸ D, (E ⊗ F) ⊸ G), our calculus uses labeled directed acyclic graphs called <em>monoidal dependency graphs</em>. There are procedures that translate in both directions between monoidal dependency graphs and the traditional formulae.</p>
+            <p>In our calculus, morphisms are represented by labeled directed acyclic graphs called <em>monoidal substitution diagrams</em>. A monoidal substitution diagram is produced by augmenting a monoidal dependency graph with extra edges that link together pairs of nodes that share the same label.</p>
+          </div>
+        </details>
+        <a class="paper-link" href="papers/monoidal-substitution-diagrams.pdf" target="_blank" rel="noopener">Long abstract (PDF)</a>
+      </div>
     </div>
   </div>
 
@@ -592,11 +637,31 @@
       <div class="talk-slot">11:00 – 11:30</div>
       <div class="talk-title">Scalable graphical framework for fermionic computing: from premonoidality in the semantics to non-natural symmetry in the diagrammatic syntax</div>
       <div class="talk-authors">Thomas Perez <span class="affil">(INRIA, LIX, École Polytechnique)</span>, Titouan Carette <span class="affil">(LIX, École Polytechnique)</span></div>
+      <div class="talk-extras">
+        <details class="talk-abstract">
+          <summary>Abstract</summary>
+          <div class="abstract-body">
+            <p class="abstract-note">This is an abstract for a paper in preparation, soon to appear on arXiv.</p>
+            <p>Fermionic quantum computing offers an alternative to the standard qubit-based model, in which information is encoded in the occupancy of fermionic modes possibly containing indistinguishable particles that obey Fermi-Dirac statistics. The algebraic structure of such systems, captured by Canonical Anticommutation Relations (CAR) algebras, naturally leads to a premonoidal categorical semantics, reflecting the failure of the exchange law due to the antisymmetry of fermions. Permutation of two fermionic modes in Bravyi-Kitaev's model can be performed through the fermionic swap, which makes this categorical semantics a symmetric premonoidal category. While this structure corresponds to the underlying denotational semantics of Bravyi and Kitaev's early computational model, it is ill-suited for circuit manipulation, as premonoidal categories lack the exchange law enabling intuitive diagrammatic reasoning.</p>
+            <p>In this work, we address this challenge by embedding the symmetric premonoidal category of fermionic processes into a presymmetric monoidal category via a functor defined using the Jordan-Wigner mapping. Interestingly, this functor does not map the fermionic swap to a symmetry for the Qubit category equipped with the usual tensor product, due to a default of naturality. This allows us to recover a setting where diagrammatic syntax is more reasonable—the categories involved are monoidal categories, and more specifically props, equipped with a non-natural symmetry given by the image of the fermionic swap. We provide axiomatizations for these categories.</p>
+          </div>
+        </details>
+        <a class="paper-link" href="papers/fermionic-computing.pdf" target="_blank" rel="noopener">Long abstract (PDF)</a>
+      </div>
     </div>
     <div class="talk-item">
       <div class="talk-slot">11:30 – 12:00</div>
       <div class="talk-title">Towards a combinatorial representation of first-order bicategories</div>
       <div class="talk-authors">Leo Lobski <span class="affil">(University College London)</span>, Ralph Sarkis <span class="affil">(University College London)</span>, Paul Wilson <span class="affil">(Hellas AI)</span>, Fabio Zanasi <span class="affil">(University College London)</span></div>
+      <div class="talk-extras">
+        <details class="talk-abstract">
+          <summary>Abstract</summary>
+          <div class="abstract-body">
+            <p>We present work in progress towards a combinatorial characterisation of first-order bicategories. These structures provide a categorical setting for studying first-order logic through a string-diagrammatic syntax. Unlike string diagrams for monoidal categories, those of first-order bicategories do not admit a straightforward combinatorial representation in terms of hypergraphs, due to two interacting monoidal structures. Developing such a representation is a necessary step towards a computationally feasible implementation of string diagram rewriting: structurally equivalent string diagrams can then be interpreted as the same hypergraph, substantially simplifying matching procedures.</p>
+          </div>
+        </details>
+        <a class="paper-link" href="papers/first-order-bicategories.pdf" target="_blank" rel="noopener">Long abstract (PDF)</a>
+      </div>
     </div>
   </div>
 
@@ -629,6 +694,30 @@
       <div class="talk-slot">15:00 – 15:30</div>
       <div class="talk-title">Function-constructor nets and their semantics</div>
       <div class="talk-authors">Marc Thatcher <span class="affil">(University of Sussex)</span></div>
+      <div class="talk-extras">
+        <details class="talk-abstract">
+          <summary>Abstract</summary>
+          <div class="abstract-body">
+            <p>Interaction nets are a form of graph rewriting, generalising the proof structures of multiplicative linear logic. Introduced as “a new kind of programming language”, they have rather been primarily applied in the optimal and efficient reduction of λ-calculus terms. More recently, the availability of multicore processors has renewed interest in interaction nets as a model of asynchronous parallel computation with emerging industrial implementations and active research languages.</p>
+            <p>Under their standard operational semantics, interaction nets do not have notions of
+            input or output, and the evaluation result, if any, is its normal form. This creates a
+            number of difficulties in formalising their use as a programming language. We reconsider
+            interaction nets from Lafont’s original programming language perspective by adopting an
+            observational view of semantics. Our contributions are:
+            <ul>
+                <li>We refine the definition of interaction nets by distinguishing function symbols
+                from constructors and distinguishing inputs from outputs.</li>
+                <li>An operational semantics is given, which replaces normal forms as the result of
+                evaluation with observational output, orthogonal to termination.</li>
+                <li>We develop a denotational semantics for function-constructor nets based on
+                constructor trees, analogous to Böhm trees.</li>
+                <li>We sketch a proof of the full abstraction of this semantics.</li>
+            </ul>
+            </p>
+          </div>
+        </details>
+        <a class="paper-link" href="papers/function-constructor-nets.pdf" target="_blank" rel="noopener">Long abstract (PDF)</a>
+      </div>
     </div>
   </div>
 
@@ -649,16 +738,53 @@
       <div class="talk-slot">16:00 – 16:30</div>
       <div class="talk-title">Remarks on proof nets as combinatorial maps</div>
       <div class="talk-authors">Lê Thành Dũng (Tito) Nguyễn <span class="affil">(CNRS / Aix-Marseille Univ.)</span></div>
+      <div class="talk-extras">
+        <details class="talk-abstract">
+          <summary>Abstract</summary>
+          <div class="abstract-body">
+            <p>This is a proposal for a talk concerning some technically easy yet little-known
+            observations. The key concept is that of <em>combinatorial map</em>: discrete objects
+            that correspond to topological embeddings of graphs on surfaces. Since the 2010s, they
+            have made prominent appearances in the bijective and enumerative combinatorics of linear
+            λ-terms. However, they are virtually never mentioned in conjunction with proof nets. My
+            contention is that combinatorial maps:</p>
+            <ul>
+              <li>provide the right notion of planarity for the proof nets of non-commutative (cyclic) MLL;</li>
+              <li>explain what is happening in Melliès's “ribbon” correctness criterion for cyclic MLL;</li>
+              <li>shed some light on the historical “long trip” correctness criterion, both in the commutative and non-commutative cases.</li>
+            </ul>
+          </div>
+        </details>
+        <a class="paper-link" href="papers/proof-nets-combinatorial-maps.pdf" target="_blank" rel="noopener">Long abstract (PDF)</a>
+      </div>
     </div>
     <div class="talk-item">
       <div class="talk-slot">16:30 – 17:00</div>
       <div class="talk-title">On the role of connectivity in linear logic proofs</div>
       <div class="talk-authors">Raffaele Di Donna <span class="affil">(Université Paris Cité (IRIF), Università Roma Tre)</span>, Lorenzo Tortora de Falco <span class="affil">(Università Roma Tre)</span></div>
+      <div class="talk-extras">
+        <details class="talk-abstract">
+          <summary>Abstract</summary>
+          <div class="abstract-body">
+            <p>We investigate a property that extends the Danos-Regnier correctness criterion for linear logic proof-structures. The property applies to the correctness graphs of a proof-structure: it states that any such graph is acyclic and the number of its connected components is exactly one more than the number of nodes bottom or weakening. This is known to be necessary but not sufficient in multiplicative exponential linear logic to recover a sequent calculus proof from a proof-structure. We present a geometric condition allowing us to turn this necessary property into a sufficient one: we can thus isolate fragments of linear logic for which this property is indeed a correctness criterion. In intuitionistic linear logic, the property is equivalent to the familiar requirement of having exactly one output conclusion, and is sufficient for sequentialization in the fragment corresponding to the half-polarized typing system for call-by-push-value by Ehrhard.</p>
+          </div>
+        </details>
+        <a class="paper-link" href="papers/connectivity-linear-logic-proofs.pdf" target="_blank" rel="noopener">Long abstract (PDF)</a>
+      </div>
     </div>
     <div class="talk-item">
       <div class="talk-slot">17:00 – 17:30</div>
       <div class="talk-title">Representing non-associativity in effectful situation: string diagrams and sequential proof-nets</div>
       <div class="talk-authors">Éléonore Mangel <span class="affil">(Univ. Paris Cité, CNRS, INRIA)</span>, Paul-André Melliès <span class="affil">(CNRS, Univ. Paris Cité, INRIA)</span>, Guillaume Munch-Maccagnoni <span class="affil">(INRIA, LS2N CNRS)</span></div>
+      <div class="talk-extras">
+        <details class="talk-abstract">
+          <summary>Abstract</summary>
+          <div class="abstract-body">
+            <p>In this talk, we will describe two different and equivalent diagrammatic ways to describe how effectful programs compose in a possibly non-associative way. The first formalism is a variant of functorial game semantics depicted in the 2-categorical language of string diagrams. The second formalism is based on sequential proof-nets, a new graphical representation of proofs with non-associative composition recently introduced by the three authors for the classical L-calculus.</p>
+          </div>
+        </details>
+        <a class="paper-link" href="papers/representing-non-associativity.pdf" target="_blank" rel="noopener">Long abstract (PDF)</a>
+      </div>
     </div>
   </div>
 
